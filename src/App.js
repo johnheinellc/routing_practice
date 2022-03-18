@@ -1,25 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
 
+import React from "react";
+import {BrowserRouter,Switch,Route,Link } from "react-router-dom";
+import Home from './components/Home';
+import Numbers from './components/Numbers';
+import Hello from './components/Hello';
+import Colors from './components/Colors';
+// import { useParams } from "react-router";
+
+
+    
 function App() {
+  // const { int } = useParams();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <BrowserRouter >
+      <div className="App">
+        <h1>Routing Example</h1>
+
+        {/* Routes */}
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <Switch>
+            <Route exact path = "/home">
+              <Home/>
+            </Route>
+            <Route exact path = "/:int">
+              <Numbers/>
+            </Route>
+            <Route exact path = "/:txt">
+              <Hello/>
+            </Route>
+            <Route exact path = "/:int/:font/:bg">
+              <Colors/>
+            </Route>
+          </Switch>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
-
+    
 export default App;
